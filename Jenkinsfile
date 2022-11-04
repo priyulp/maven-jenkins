@@ -1,4 +1,4 @@
-pipeline{
+pipeline {
     //Directives
     agent any
     tools {
@@ -9,31 +9,24 @@ pipeline{
         // Specify various stage with in stages
 
         // stage 1. Build
-        stage ('Build'){
+        stage('Build') {
             steps {
                 sh 'mvn clean install package'
             }
         }
 
         // Stage2 : Testing
-        stage ('Test'){
+        stage('Test') {
             steps {
                 echo ' testing......'
-
             }
         }
 
         // Stage3 : Publish the source code to Sonarqube
-        stage ('Deploy'){
+        stage('Deploy') {
             steps {
                 echo ' deploying.....'
-                }
-
             }
         }
-
-        
-        
     }
-
 }
