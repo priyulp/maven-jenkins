@@ -5,6 +5,13 @@ pipeline {
         maven 'Maven'
     }
 
+    environment {
+        ArtifactId = readMavenPom().getArtifactId()
+        Version = readMavenPom().getVersion()
+        Name = readMavenPom().getName()
+        GroupId = readMavenPom().getGroupId()
+    }
+
     stages {
         // Specify various stage with in stages
 
@@ -26,7 +33,9 @@ pipeline {
 
         stage('Publish to Nexus') {
             steps {
-                nexusArtifactUploader artifacts:
+                script {
+                    def NexusRepo = Version.endsWith('SNAPSHOT') ? 'KKDevOpsLab-SNAPSHOT' : 'KKDevOpsLab-RELEASE'
+                    nexusArtifactUploader artifacts:
                  [[artifactId: 'VinayDevOpsLab',
                   classifier: '',
                    file: 'target/VinayDevOpsLab-0.0.11-SNAPSHOT.war',
@@ -38,6 +47,7 @@ pipeline {
                          protocol: 'http',
                           repository: 'KKDevOpsLab-SNAPSHOT',
                            version: '0.0.11-SNAPSHOT'
+                }
             }
         }
 
