@@ -36,17 +36,17 @@ pipeline {
                 script {
                     def NexusRepo = Version.endsWith('SNAPSHOT') ? 'KKDevOpsLab-SNAPSHOT' : 'KKDevOpsLab-RELEASE'
                     nexusArtifactUploader artifacts:
-                 [[artifactId: 'VinayDevOpsLab',
+                 [[artifactId: "${ArtifactId}",
                   classifier: '',
-                   file: 'target/VinayDevOpsLab-0.0.11-SNAPSHOT.war',
+                   file: "target/${Name}-${Version}.war",
                     type: 'WAR']],
                      credentialsId: 'd870f477-b1a0-4dc2-a28b-a5995d9f75b6',
-                      groupId: 'com.vinaysdevopslab',
+                      groupId: "${GroupId}",
                        nexusUrl: '3.235.192.87:8081',
                         nexusVersion: 'nexus3',
                          protocol: 'http',
                           repository: "${NexusRepo}",
-                           version: '0.0.11-SNAPSHOT'
+                           version: "$Version"
                 }
             }
         }
