@@ -33,12 +33,7 @@ pipeline {
 
         stage('Publish to Nexus') {
             steps {
-                script {
-
-                    def NexusRepo = Version.endsWith("SNAPSHOT") ? "KKDevOpsLab-SNAPSHOT" : "KKDevOpsLab-RELEASE"
-
-                    nexusArtifactUploader artifacts:[[artifactId: "${ArtifactId}",classifier: '',file: "target/"${Name}"-"${Version}".war",type: 'WAR']],credentialsId: 'de70796e-5f33-4e8b-8ea6-b996f84114f7',groupId: "${GroupID}",nexusUrl: '3.235.185.222:8081',nexusVersion: 'nexus3',protocol: 'http',repository: "${NexusRepo}",version: "${Version}"
-                }
+                nexusArtifactUploader artifacts: [[artifactId: 'VinayDevOpsLab', classifier: '', file: 'target/VinayDevOpsLab-0.0.11-SNAPSHOT.war', type: 'WAR']], credentialsId: 'de70796e-5f33-4e8b-8ea6-b996f84114f7', groupId: 'com.vinaysdevopslab', nexusUrl: '3.235.185.222:8081', nexusVersion: 'nexus2', protocol: 'http', repository: 'KKDevOpsLab-SNAPSHOT', version: '0.0.11-SNAPSHOT'
             }
         }
 
