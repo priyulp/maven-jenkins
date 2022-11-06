@@ -45,7 +45,7 @@ pipeline {
                        nexusUrl: '3.235.192.87:8081',
                         nexusVersion: 'nexus3',
                          protocol: 'http',
-                          repository: 'KKDevOpsLab-SNAPSHOT',
+                          repository: "${NexusRepo}",
                            version: '0.0.11-SNAPSHOT'
                 }
             }
