@@ -37,18 +37,7 @@ pipeline {
 
                     def NexusRepo = Version.endsWith("SNAPSHOT") ? "KKDevOpsLab-SNAPSHOT" : "KKDevOpsLab-RELEASE"
 
-                    nexusArtifactUploader artifacts:
-                    [[artifactId: "${ArtifactId}",
-                    classifier: '',
-                    file: "target/"${Name}"-"${Version}".war",
-                    type: 'WAR']],
-                    credentialsId: 'de70796e-5f33-4e8b-8ea6-b996f84114f7',
-                    groupId: "${GroupID}",
-                    nexusUrl: '3.235.185.222:8081',
-                    nexusVersion: 'nexus3',
-                    protocol: 'http',
-                    repository: "${NexusRepo}",
-                    version: "${Version}"
+                    nexusArtifactUploader artifacts:[[artifactId: "${ArtifactId}",classifier: '',file: "target/"${Name}"-"${Version}".war",type: 'WAR']],credentialsId: 'de70796e-5f33-4e8b-8ea6-b996f84114f7',groupId: "${GroupID}",nexusUrl: '3.235.185.222:8081',nexusVersion: 'nexus3',protocol: 'http',repository: "${NexusRepo}",version: "${Version}"
                 }
             }
         }
