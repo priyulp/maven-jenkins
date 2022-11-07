@@ -39,7 +39,7 @@ pipeline {
                  [[artifactId: "${ArtifactId}",
                   classifier: '',
                    file: "target/${Name}-${Version}.war",
-                    type: 'WAR']],
+                    type: 'war']],
                      credentialsId: 'd870f477-b1a0-4dc2-a28b-a5995d9f75b6',
                       groupId: "${GroupId}",
                        nexusUrl: '3.236.139.208:8081',
