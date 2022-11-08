@@ -52,7 +52,7 @@ pipeline {
         }
 
         // Stage 5 : Publish the source code to Tomcat
-        stage('Deploy') {
+        stage('Deploy to tomcat') {
             steps {
                 echo ' deploying.....'
                 sshPublisher(publishers:
@@ -72,13 +72,11 @@ pipeline {
                     ])
             }
         }
-    }
-
-    // Stage 6 : Deploying the build artifact to Docker tomcat
-    stage('Deploy') {
-        steps {
-            echo ' deploying.....'
-            sshPublisher(publishers:
+        // Stage 6 : Deploying the build artifact to Docker tomcat
+        stage('Deploy to Docker') {
+            steps {
+                echo ' deploying to docker.....'
+                sshPublisher(publishers:
             [sshPublisherDesc(
                 configName: 'Ansible_Controller',
                 transfers: [
@@ -94,5 +92,6 @@ pipeline {
                 verbose: false)
                 ])
             }
+        }
     }
 }
