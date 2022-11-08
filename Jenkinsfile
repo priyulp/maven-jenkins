@@ -42,7 +42,7 @@ pipeline {
                     type: 'war']],
                      credentialsId: 'd870f477-b1a0-4dc2-a28b-a5995d9f75b6',
                       groupId: "${GroupId}",
-                       nexusUrl: '34.239.163.174:8081',
+                       nexusUrl: '44.197.204.74:8081',
                         nexusVersion: 'nexus3',
                          protocol: 'http',
                           repository: "${NexusRepo}",
@@ -55,6 +55,21 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo ' deploying.....'
+                sshPublisher(publishers:
+                [sshPublisherDesc(
+                    configName: 'Ansible_Controller',
+                    transfers: [
+                        sshTransfer(
+                            cleanRemote: false,
+                            execCommand:
+                            'ansible-playbook /opt/playbooks/downloadanddeploy.yaml -i /opt/playbooks/hosts',
+                            execTimeout: 12000
+                        )
+                    ],
+                    usePromotionTimestamp: false,
+                    useWorkspaceInPromotion: false,
+                    verbose: false)
+                    ])
             }
         }
     }
