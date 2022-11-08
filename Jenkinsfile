@@ -51,7 +51,7 @@ pipeline {
             }
         }
 
-        // Stage 5 : Publish the source code to Sonarqube
+        // Stage 5 : Publish the source code to Tomcat
         stage('Deploy') {
             steps {
                 echo ' deploying.....'
@@ -63,6 +63,29 @@ pipeline {
                             cleanRemote: false,
                             execCommand:
                             'ansible-playbook /opt/playbooks/downloadanddeploy_as_tomcat_user.yaml -i /opt/playbooks/hosts',
+                            execTimeout: 12000
+                        )
+                    ],
+                    usePromotionTimestamp: false,
+                    useWorkspaceInPromotion: false,
+                    verbose: false)
+                    ])
+            }
+        }
+    }
+
+    // Stage 6 : Deploying the build artifact to Docker tomcat
+        stage('Deploy') {
+            steps {
+                echo ' deploying.....'
+                sshPublisher(publishers:
+                [sshPublisherDesc(
+                    configName: 'Ansible_Controller',
+                    transfers: [
+                        sshTransfer(
+                            cleanRemote: false,
+                            execCommand:
+                            'ansible-playbook /opt/playbooks/downloadanddeploy_docker.yaml -i /opt/playbooks/hosts',
                             execTimeout: 12000
                         )
                     ],
