@@ -6,8 +6,9 @@ Project from Udemy
 
 https://www.udemy.com/course/devops-iac-cicd/
 
-![image](https://user-images.githubusercontent.com/39504405/199947579-4882bd90-6244-442e-be6b-aa7b1250272f.png)
+![image](https://user-images.githubusercontent.com/39504405/200844071-df5e7bc0-9574-4832-bd8d-9a92a045602c.png)
 
+![image](https://user-images.githubusercontent.com/39504405/199947579-4882bd90-6244-442e-be6b-aa7b1250272f.png)
 
 ![image](https://user-images.githubusercontent.com/39504405/200839080-22335bae-78f2-40f9-b97e-22f4f8aaf801.png)
 
