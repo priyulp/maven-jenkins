@@ -20,7 +20,7 @@ variable "ami_ubuntu" {
 
 variable "instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 variable "instance_type_for_nexus" {
