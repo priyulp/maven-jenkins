@@ -25,7 +25,7 @@ variable "instance_type" {
 
 variable "instance_type_for_nexus" {
   type    = string
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 variable "key_name" {
