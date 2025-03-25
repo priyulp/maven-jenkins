@@ -10,10 +10,7 @@
     <version>0.0.28-RELEASE</version>
     <name>VinayDevOpsLab</name>
     <url>http://maven.apache.org</url>
-    <properties>
-    <sonar.host.url>http://34.30.206.67:9000/</sonar.host.url>
-    <sonar.token>sqa_f9819867ecae8e8ea76d0480ff1988296bbea2e4</sonar.token>
-</properties>     
+        
 
     <dependencies>
         <!-- JUnit for Unit Testing -->
