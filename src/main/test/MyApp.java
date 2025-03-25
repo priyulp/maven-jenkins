@@ -1,14 +1,22 @@
-package com.example;
+package com.vinaysdevopslab.controller;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.Assert.*;
 
-public class MyAppTest {
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class HomeControllerTest {
+
+    @Autowired
+    private HomeController homeController;
 
     @Test
-    void testExampleMethod() {
-        MyApp app = new MyApp();
-        int result = app.add(5, 3);
-        assertEquals(8, result, "Addition should return 8");
+    public void testHomeEndpoint() {
+        String result = homeController.home();
+        assertEquals("Welcome to VinayDevOpsLab!", result);
     }
 }
