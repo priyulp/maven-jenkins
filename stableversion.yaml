@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-stable
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: tomcat
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: tomcat
+        version: stable
+    spec:
+      containers:
+      - name: tomcat
+        image: tomcat:9.0.83
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
